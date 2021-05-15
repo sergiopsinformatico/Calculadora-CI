@@ -12,7 +12,12 @@ pipeline {
                 stash(name: 'compiled-results', includes: 'sources/*.py*') 
             }
         }
-		stage('Unit Testing') {
+		stage('Test') { 
+            agent {
+                docker {
+                    image 'techio/python3-unittest-runner' 
+                }
+            }
 		    steps {
                 sh 'python -m unittest -v sources/test_calculadora.py' 
             }

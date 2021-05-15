@@ -12,12 +12,7 @@ pipeline {
                 stash(name: 'compiled-results', includes: 'sources/*.py*') 
             }
         }
-		stage('Test') { 
-            agent {
-                docker {
-                    image 'python:2-alpine' 
-                }
-            }
+		stage('Run Unit Tests') {
             steps {
                 sh 'python -m unittest -v sources/test_calculadora.py' 
             }

@@ -15,11 +15,11 @@ pipeline {
 		stage('Test') { 
             agent {
                 docker {
-                    image 'techio/python3-unittest-runner' 
+                    image 'python:2-alpine'
                 }
             }
 		    steps {
-                sh 'python -m unittest -v sources/test_calculadora.py' 
+                sh 'python sources/test_calculadora.py' 
             }
         }
     }

@@ -3,14 +3,15 @@ Sergio Perez Sanchez - test_calculadora.py
 """
 
 import calculadora
+import unittest
 
-def test_suma():
-	assert 8 == calculadora.suma(4, 4)
+class TestCalculatorMethods(unittest.TestCase):
 
-def test_resta():
-	assert 2 == calculadora.resta(5, 3)
+	def test_suma(self):
+		self.assertEqual(8, calculadora.suma(4, 4))
 
-if __name__ == "__main__":
-	test_suma();
-	test_resta()
-	print("Los Tests se han ejecutado correctamente")
+	def test_resta(self):
+		self.assertEqual(2, calculadora.resta(5, 3))
+
+if __name__ == '__main__':
+    unittest.main()

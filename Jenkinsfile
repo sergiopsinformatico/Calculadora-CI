@@ -12,13 +12,8 @@ pipeline {
                 stash(name: 'compiled-results', includes: 'sources/*.py*') 
             }
         }
-		stage('Test') {
-		    agent {
-                docker {
-                    image 'qnib/pytest' 
-                }
-            }
-            steps {
+		stage('Unit Testing') {
+		    steps {
                 sh 'python -m unittest -v sources/test_calculadora.py' 
             }
         }
